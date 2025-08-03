@@ -1,7 +1,7 @@
 <template>
-  <div @click="toggleTheme">
-    <AkSunFill class="size-6" v-if="theme === 'garden'"/>
-    <BsMoonStarsFill class="size-6" v-if="theme === 'sunset'"/>
+  <div @click="toggleTheme" class="cursor-pointer ">
+    <AkSunFill class="size-6 hover:text-orange-400 transition-all ease-in" v-if="!isChecked"/>
+    <BsMoonStarsFill class="size-6 hover:text-yellow-300 transition-all ease-in" v-if="isChecked"/>
   </div>
 </template>
 

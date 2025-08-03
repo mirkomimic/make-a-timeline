@@ -4,7 +4,7 @@ import { themeChange } from "theme-change";
 export function useTheme() {
   const THEMES = {
     LIGHT: "garden",
-    DARK: "sunset",
+    DARK: "dim",
   } as const;
 
   type Theme = (typeof THEMES)[keyof typeof THEMES];
