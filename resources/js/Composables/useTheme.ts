@@ -1,9 +1,9 @@
-import { ref, onMounted, watch } from "vue";
 import { themeChange } from "theme-change";
+import { onMounted, ref, watch } from "vue";
 
 export function useTheme() {
   const THEMES = {
-    LIGHT: "garden",
+    LIGHT: "emerald",
     DARK: "dim",
   } as const;
 

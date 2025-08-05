@@ -1,11 +1,11 @@
 <template>
-  <header className="fixed top-0 z-10 h-14 w-full uppercase backdrop-blur-2xl">
+  <header className="fixed top-0 z-10 h-14 w-full uppercase backdrop-blur-2xl ">
     <div
       className="container mx-auto grid h-full grid-cols-3 items-center gap-2 font-bold"
     >
-      <Link href="/">
-        <div class="font-bitcount text-xl flex">Make A Timeline</div>
-      </Link>
+      <div class="text-md flex font-bitcount">
+        <Link href="/" class="text-primary">Make A Timeline</Link>
+      </div>
 
       <div></div>
 

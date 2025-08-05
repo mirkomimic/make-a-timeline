@@ -2,7 +2,7 @@
   <div class="breadcrumbs text-sm">
     <ul>
       <li v-for="item in items" :key="item.name">
-        <component v-if="item.icon" :is="item.icon" class="me-2" />
+        <component v-if="item.icon" :is="item.icon" class="me-2 text-xl" />
         <Link v-if="item.isActive" :href="item.href">{{ item.name }}</Link>
         <span v-else>{{ item.name }}</span>
       </li>

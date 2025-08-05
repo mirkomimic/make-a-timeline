@@ -3,14 +3,11 @@ import Breadcrumbs from "@/Components/Breadcrumbs.vue";
 import Footer from "@/Components/Footer.vue";
 import Header from "@/Components/Header.vue";
 import SideNav from "@/Components/SideNav.vue";
+import SideNavToggle from "@/Components/SideNavToggle.vue";
 import Timeline from "@/Components/Timeline.vue";
-import MainLayout from "@/Layouts/MainLayout.vue";
-import { Head, Link } from "@inertiajs/vue3";
-import {
-  AnFilledCheckCircle,
-  AnFilledHome,
-  AnOutlinedPlus,
-} from "@kalimahapps/vue-icons";
+import MainLayoutWithSideNav from "@/Layouts/MainLayoutWithSideNav.vue";
+import { Head } from "@inertiajs/vue3";
+import { AnFilledHome } from "@kalimahapps/vue-icons";
 
 defineProps<{
   canLogin?: boolean;
@@ -52,20 +49,40 @@ const timeline = {
 
 <template>
   <Head title="Home" />
-  <Header />
-  <MainLayout>
-    <SideNav />
+  <MainLayoutWithSideNav>
+    <template #header>
+      <Header />
+    </template>
 
-    <div class="ps-3">
+    <template #secondaryMenu>
+      <div class="container mx-auto w-full">
+        <SideNavToggle />
+        <div class="divider my-0"></div>
+      </div>
+    </template>
+
+    <template #side-nav>
+      <div class="flex flex-col">
+        <SideNav />
+      </div>
+    </template>
+
+    <main class="mx-auto w-full">
       <Breadcrumbs
         :items="[
           { name: 'Home', href: '/', isActive: false, icon: AnFilledHome },
         ]"
       />
 
-      <h1 class="text-3xl text-center mb-3">{{ timeline.title }}</h1>
+      <h1 class="text-3xl text-center mb-3 text-primary uppercase font-bold">
+        {{ timeline.title }}
+      </h1>
+
       <Timeline v-if="timeline.items" :items="timeline.items" />
-    </div>
-  </MainLayout>
-  <Footer />
+    </main>
+
+    <template #footer>
+      <Footer />
+    </template>
+  </MainLayoutWithSideNav>
 </template>
