@@ -6,42 +6,51 @@ import SideNav from "@/Components/SideNav.vue";
 import SideNavToggle from "@/Components/SideNavToggle.vue";
 import Timeline from "@/Components/Timeline.vue";
 import MainLayoutWithSideNav from "@/Layouts/MainLayoutWithSideNav.vue";
+import { TimelineType } from "@/types/custom";
 import { Head } from "@inertiajs/vue3";
 import { AnFilledHome } from "@kalimahapps/vue-icons";
+import { ref } from "vue";
 
 defineProps<{
   canLogin?: boolean;
   canRegister?: boolean;
   laravelVersion: string;
   phpVersion: string;
+  timelines: TimelineType[];
 }>();
 
-const timeline = {
+const selectedTimeline = ref<number>(0);
+
+const timeline: TimelineType = {
+  id: 1,
   title: "test title",
+  description: "test description",
+  alignment: "horizontal",
+  visibility: "public",
   items: [
     {
-      date: "07-21-2025",
-      text: "test text",
+      start: "07-21-2025",
+      end: "test text",
     },
     {
-      date: "07-21-2025",
-      text: "test text adfasdf dafdsf fasdfsd",
+      start: "07-21-2025",
+      end: "test text adfasdf dafdsf fasdfsd",
     },
     {
-      date: "07-21-2025",
-      text: "test text",
+      start: "07-21-2025",
+      end: "test text",
     },
     {
-      date: "07-21-2025",
-      text: "test text",
+      start: "07-21-2025",
+      end: "test text",
     },
     {
-      date: "07-21-2025",
-      text: "test text adfasdf dafdsf fasdfsd",
+      start: "07-21-2025",
+      end: "test text adfasdf dafdsf fasdfsd",
     },
     {
-      date: "07-21-2025",
-      text: "test text",
+      start: "07-21-2025",
+      end: "test text",
     },
   ],
 };
@@ -63,22 +72,22 @@ const timeline = {
 
     <template #side-nav>
       <div class="flex flex-col">
-        <SideNav />
+        <SideNav
+          v-model:selectedTimeline="selectedTimeline"
+          :timelines="timelines"
+        />
       </div>
     </template>
 
-    <main class="mx-auto w-full">
+    <main class="m-1 mx-auto min-h-[calc(100vh-92px)] w-full rounded-md p-2">
       <Breadcrumbs
         :items="[
           { name: 'Home', href: '/', isActive: false, icon: AnFilledHome },
         ]"
+        class="mb-5"
       />
 
-      <h1 class="text-3xl text-center mb-3 text-primary uppercase font-bold">
-        {{ timeline.title }}
-      </h1>
-
-      <Timeline v-if="timeline.items" :items="timeline.items" />
+      <Timeline v-if="timeline" :timeline="timelines[selectedTimeline]" />
     </main>
 
     <template #footer>

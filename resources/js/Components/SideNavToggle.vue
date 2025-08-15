@@ -1,5 +1,8 @@
 <template>
-  <ChMenuHamburger class="text-xl cursor-pointer" @click="toggle" />
+  <ChMenuHamburger
+    class="cursor-pointer text-xl hover:text-primary"
+    @click="toggle"
+  />
 </template>
 
 <script setup lang="ts">
