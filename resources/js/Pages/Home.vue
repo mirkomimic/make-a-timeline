@@ -4,7 +4,7 @@ import Footer from "@/Components/Footer.vue";
 import Header from "@/Components/Header.vue";
 import SideNav from "@/Components/SideNav.vue";
 import SideNavToggle from "@/Components/SideNavToggle.vue";
-import Timeline from "@/Components/Timeline.vue";
+import TimelineView from "@/Components/Timeline/TimelineView.vue";
 import MainLayoutWithSideNav from "@/Layouts/MainLayoutWithSideNav.vue";
 import { TimelineType } from "@/types/custom";
 import { Head } from "@inertiajs/vue3";
@@ -20,40 +20,6 @@ defineProps<{
 }>();
 
 const selectedTimeline = ref<number>(0);
-
-const timeline: TimelineType = {
-  id: 1,
-  title: "test title",
-  description: "test description",
-  alignment: "horizontal",
-  visibility: "public",
-  items: [
-    {
-      start: "07-21-2025",
-      end: "test text",
-    },
-    {
-      start: "07-21-2025",
-      end: "test text adfasdf dafdsf fasdfsd",
-    },
-    {
-      start: "07-21-2025",
-      end: "test text",
-    },
-    {
-      start: "07-21-2025",
-      end: "test text",
-    },
-    {
-      start: "07-21-2025",
-      end: "test text adfasdf dafdsf fasdfsd",
-    },
-    {
-      start: "07-21-2025",
-      end: "test text",
-    },
-  ],
-};
 </script>
 
 <template>
@@ -87,7 +53,10 @@ const timeline: TimelineType = {
         class="mb-5"
       />
 
-      <Timeline v-if="timeline" :timeline="timelines[selectedTimeline]" />
+      <TimelineView
+        v-if="timelines.length"
+        :timeline="timelines[selectedTimeline]"
+      />
     </main>
 
     <template #footer>

@@ -17,9 +17,12 @@ class TimelineItemFactory extends Factory
    */
   public function definition(): array
   {
+    static $sort_order_num = 1;
+
     return [
       'start' => $this->faker->numberBetween(1900, 2100),
       'end' => $this->faker->text(rand(100, 200)),
+      'sort_order_num' => $sort_order_num++,
     ];
   }
 }

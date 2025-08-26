@@ -1,4 +1,11 @@
 <template>
+  <Link :href="route('timeline.edit', timeline.id)">
+    <button class="btn btn-outline btn-primary btn-sm mb-5">
+      <BxSolidEdit />
+      Edit timeline
+    </button>
+  </Link>
+
   <h1 class="mb-3 text-3xl font-bold uppercase text-primary">
     {{ timeline.title }}
   </h1>
@@ -27,7 +34,8 @@
 <script setup lang="ts">
 import TextModal from "@/Components/Modal/TextModal.vue";
 import { TimelineType } from "@/types/custom";
-import { AnFilledCheckCircle } from "@kalimahapps/vue-icons";
+import { Link } from "@inertiajs/vue3";
+import { AnFilledCheckCircle, BxSolidEdit } from "@kalimahapps/vue-icons";
 
 defineProps<{
   timeline: TimelineType;

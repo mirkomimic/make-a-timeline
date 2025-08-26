@@ -34,7 +34,11 @@ class HandleInertiaRequests extends Middleware
       'auth' => [
         'user' => $request->user(),
       ],
-      "isSideNavOpen" => true
+      "isSideNavOpen" => true,
+      'flash' => [
+        'success' => fn() => $request->session()->get('success'),
+        'error' => fn() => $request->session()->get('error'),
+      ],
     ];
   }
 }

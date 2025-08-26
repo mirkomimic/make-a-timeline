@@ -13,9 +13,11 @@ return new class extends Migration
   public function up(): void
   {
     Schema::create('timeline_items', function (Blueprint $table) {
+      $table->id();
       $table->foreignIdFor(Timeline::class);
       $table->string("start")->nullable();
       $table->string("end")->nullable();
+      $table->integer("sort_order_num")->nullable();
       $table->timestamps();
     });
   }

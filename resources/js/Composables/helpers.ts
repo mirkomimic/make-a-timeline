@@ -1,5 +1,5 @@
 export function useHelpers() {
-  function cutString(str: string, length: number, addEllipsis = false) {
+  function cutString(str: string, length: number, addEllipsis = false): string {
     if (typeof str !== "string") return "";
     if (length < 0) return "";
 
